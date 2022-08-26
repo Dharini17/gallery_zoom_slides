@@ -11,49 +11,32 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages). 
 -->
 
-Display images on full page with all zoomin zoomout functions
+A Flutter plugin which gives you image functions like zoomin,zoomout,pinch,scale on double tap.
 
-## Features
-
-gallery slides functionality zoomin,zoomout,pinch zoomin,pinch zoomout,double tap zoomin-zoomout
-
-## Getting started
+## Installation
 
  To start using this package, add gallery_zoom_slides dependency to your pubspec.yaml
 
 ```dependencies:
-           gallery_zoom_slides: "<latest_release>"
+           gallery_zoom_slides: ^0.0.1
 ```
 
 ## Usage
 
+Just add GalleryZoomSlides(arrayImages,0) into body of your Class
 
-```List<String> arrayImages =
+```
+List<String> arrayImages =
      ["https://images.pexels.com/photos/60597/dahlia-red-blossom-bloom-60597.jpeg",
        "https://www.gardeningknowhow.com/wp-content/uploads/2019/09/flower-color-400x391.jpg"
      ];
 
+...
 
-     InkWell(
-                   onTap: (){
-                     Navigator.push(
-                         context,
-                         MaterialPageRoute(
-                             builder: (context) => GalleryZoomSlides(
-                                 arrayImages,0)));
-                   },
-                   child:Container(
-                     padding:EdgeInsets.all(10.0),
-                     color: Colors.grey,
-                     child: Text("View Gallery",style: TextStyle(
-                         color: Colors.white
-                     ),),
-                   )
-               ),
-
+     body: GalleryZoomSlides(arrayImages,0);
 
 ```
+![Screenshot_20220826-230935](https://user-images.githubusercontent.com/20676701/186964105-d2718d55-d632-4cf0-b1ad-116738366166.png)
 
-## Additional information
 
-you can also set which index of image want to display initallly.
+
