@@ -1,0 +1,17 @@
+name: gallery_zoom_slides
+description: A new Flutter package project.
+version: 0.0.2
+homepage: https://github.com/Dharini17/gallery_zoom_slides
+
+environment:
+  sdk: '>=2.19.3 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cached_network_image: ^3.2.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
