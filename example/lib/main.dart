@@ -1,5 +1,5 @@
-import 'package:example/GalleryView.dart';
 import 'package:flutter/material.dart';
+import 'package:gallery_zoom_slides/gallery_zoom_slides.dart';
 
 void main() {
   runApp(const MyApp());
@@ -70,7 +70,15 @@ class _MyHomePageState extends State<MyHomePage> {
         child: ElevatedButton(
          onPressed: (){
 
-           Navigator.push(context, MaterialPageRoute(builder: (context)=>GalleryView()));
+           Navigator.push(context, MaterialPageRoute(builder: (context)=>
+               gallery_zoom_slides(
+
+                          arrayImages:  const ["https://i.ibb.co/bFx0p10/7.jpg",
+                                         "https://i.ibb.co/SPwd6rJ/8.jpg",
+                                         "https://i.ibb.co/GP2GFTG/6.jpg",
+                                         "https://i.ibb.co/s3JYgx1/5.jpg",
+                                       ],
+                         currentIndex: 0)));
 
          },
          child: Text("Open gallery"),

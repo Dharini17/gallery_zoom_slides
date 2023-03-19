@@ -6,7 +6,7 @@ Image zoomin & zoomout functionality
 
 - pan gesture
 - pinch zoomin & zoomout
-- double tap zoomin - zoomout
+- double tap zoomin - zoomout 
 
 <table>
    <tr>
@@ -35,16 +35,15 @@ dependencies:
 
 import 'package:gallery_zoom_slides/gallery_zoom_slides.dart';
 
-            body:  gallery_zoom_slides(
-                    arrayImages:  [
-                    
-                    "https://i.ibb.co/bFx0p10/7.jpg",
-                    "https://i.ibb.co/SPwd6rJ/8.jpg",
-                    "https://i.ibb.co/GP2GFTG/6.jpg",
-                    "https://i.ibb.co/s3JYgx1/5.jpg",
-                    ],
-                     currentIndex: 2
-            )
+    Navigator.push(context, MaterialPageRoute(builder: (context)=>
+         gallery_zoom_slides(
+            arrayImages:  const ["https://i.ibb.co/bFx0p10/7.jpg",
+            "https://i.ibb.co/SPwd6rJ/8.jpg",
+            "https://i.ibb.co/GP2GFTG/6.jpg",
+            "https://i.ibb.co/s3JYgx1/5.jpg",
+            ],
+            currentIndex: 0)
+            ));
         ...
 
 
