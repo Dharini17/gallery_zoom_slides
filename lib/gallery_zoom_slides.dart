@@ -76,81 +76,150 @@ class gallery_zoom_slides extends StatelessWidget{
 
     });
 
-    return  Container(
+    return  Scaffold(
+        backgroundColor: Colors.white,
+      body: Container(
 
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
 
-        child:  Stack(
-          children: <Widget>[
+          child:  Stack(
+            children: <Widget>[
 
-            //page content
-            Positioned(
-              top: 0,left: 0,bottom: 0,right: 0,
+              //page content
+              Positioned(
+                top: 0,left: 0,bottom: 0,right: 0,
 
-              child: PageView(
-                  physics:new NeverScrollableScrollPhysics(),
-                  controller: pageController,
-                  onPageChanged: onPageChanged,
-                  children:<Widget>[
+                child: PageView(
+                    physics:new NeverScrollableScrollPhysics(),
+                    controller: pageController,
+                    onPageChanged: onPageChanged,
+                    children:<Widget>[
 
-                    for(int i=0;i<arrayImages.length;i++)
+                      for(int i=0;i<arrayImages.length;i++)
 
-                      GestureDetector(
-                        onDoubleTapDown: _handleDoubleTapDown,
-                        onDoubleTap: _handleDoubleTap,
-
-                        child:
-
-                        InteractiveViewer(
-                          transformationController: _transformationController,
-                          minScale: 1.0,
-                          maxScale: 3.0,
-                          panEnabled: true,
-                          scaleEnabled: true,
-                          boundaryMargin: EdgeInsets.all(100.0),
+                        GestureDetector(
+                          onDoubleTapDown: _handleDoubleTapDown,
+                          onDoubleTap: _handleDoubleTap,
 
                           child:
-                          CachedNetworkImage(
-                            imageUrl: "${arrayImages[i]}",
-                            placeholder: (context, url) => Center(child: Container(height: 45,width: 45,child: this.funcLoader(true),),),
-                            errorWidget: (context, url, error) => new Icon(Icons.error),
+
+                          InteractiveViewer(
+                            transformationController: _transformationController,
+                            minScale: 1.0,
+                            maxScale: 3.0,
+                            panEnabled: true,
+                            scaleEnabled: true,
+                            boundaryMargin: EdgeInsets.all(100.0),
+
+                            child:
+                            CachedNetworkImage(
+                              imageUrl: "${arrayImages[i]}",
+                              placeholder: (context, url) => Center(child: Container(height: 45,width: 45,child: this.funcLoader(true),),),
+                              errorWidget: (context, url, error) => new Icon(Icons.error),
+                            ),
                           ),
-                        ),
 
-                      )
+                        )
 
-                  ]
+                    ]
+                ),
+
               ),
 
-            ),
+              //bottom row
+              Positioned(
 
-            //bottom row
-            Positioned(
+                left: 0,right: 0,bottom: 10,
+                child:
+                ValueListenableBuilder(
+                    valueListenable: currIndex,
+                    builder: (BuildContext context, currIndexValue, child) {
 
-              left: 0,right: 0,bottom: 10,
-              child:
-              ValueListenableBuilder(
-                  valueListenable: currIndex,
-                  builder: (BuildContext context, currIndexValue, child) {
+                        return Row(
 
-                      return Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
 
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
 
-                        children: [
+                            //left button
+                            currIndexValue == 0 ? const CircleAvatar( radius: 22, backgroundColor: Colors.transparent,) :
+                            GestureDetector(
+                                onTap: (){
 
-                          //left button
-                          currIndexValue == 0 ? const CircleAvatar( radius: 22, backgroundColor: Colors.transparent,) :
-                          GestureDetector(
+                                  if(currIndexValue != 0) {
+                                    currIndex.value -= 1;
+                                  }
+                                  else{
+                                    currIndex.value = arrayImages.length-1;
+                                  }
+                                  currIndex.notifyListeners();
+                                  pageController.animateToPage(currIndex.value,duration: const Duration(milliseconds: 400),curve: Curves.linear);
+
+                                },
+                                child:
+                                Container(
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(25.0),
+                                      boxShadow: const [
+                                        BoxShadow(
+                                          color: Colors.grey,
+                                          spreadRadius: 1,
+                                          blurRadius: 1,
+                                          offset: Offset(0, 1), // changes position of shadow
+                                        ),
+                                      ],
+                                      color: Colors.white
+                                  ),
+                                  child:CircleAvatar(
+                                    backgroundColor: Colors.white,
+                                    radius: 22,
+                                    child: Icon(Icons.arrow_back_ios_new_rounded,size: 16,color: Colors.grey.shade800,),
+                                  ),
+                                )
+                            ),
+                            const SizedBox(width: 10,),
+                            //close button
+                            GestureDetector(
                               onTap: (){
 
-                                if(currIndexValue != 0) {
-                                  currIndex.value -= 1;
+                                Navigator.pop(context);
+
+                              },
+                              child:
+                              Container(
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(30.0),
+                                    boxShadow: const [
+                                      BoxShadow(
+                                        color: Colors.grey,
+                                        spreadRadius: 1,
+                                        blurRadius: 1,
+                                        offset: Offset(0, 1), // changes position of shadow
+                                      ),
+                                    ],
+                                    color: Colors.white
+                                ),
+                                child:
+                                CircleAvatar(
+                                  backgroundColor: Colors.white,
+                                  radius: 27,
+                                  child: Icon(Icons.close,size: 18,color: Colors.grey.shade800,),
+                                ),
+                              ),
+                            ),
+                            const SizedBox(width: 10,),
+                            //right button
+                            currIndexValue == arrayImages.length-1 ? const CircleAvatar( radius: 22, backgroundColor: Colors.transparent,) :
+                            GestureDetector(
+                              onTap: (){
+
+                                if(currIndexValue != arrayImages.length-1) {
+                                  currIndex.value += 1;
                                 }
                                 else{
-                                  currIndex.value = arrayImages.length-1;
+                                  currIndex.value = 0;
                                 }
                                 currIndex.notifyListeners();
                                 pageController.animateToPage(currIndex.value,duration: const Duration(milliseconds: 400),curve: Curves.linear);
@@ -170,91 +239,25 @@ class gallery_zoom_slides extends StatelessWidget{
                                     ],
                                     color: Colors.white
                                 ),
-                                child:CircleAvatar(
+                                child:
+                                CircleAvatar(
                                   backgroundColor: Colors.white,
                                   radius: 22,
-                                  child: Icon(Icons.arrow_back_ios_new_rounded,size: 16,color: Colors.grey.shade800,),
+                                  child: Icon(Icons.arrow_forward_ios_rounded,size: 16,color: Colors.grey.shade800,),
                                 ),
-                              )
-                          ),
-                          const SizedBox(width: 10,),
-                          //close button
-                          GestureDetector(
-                            onTap: (){
-
-                              Navigator.pop(context);
-
-                            },
-                            child:
-                            Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(30.0),
-                                  boxShadow: const [
-                                    BoxShadow(
-                                      color: Colors.grey,
-                                      spreadRadius: 1,
-                                      blurRadius: 1,
-                                      offset: Offset(0, 1), // changes position of shadow
-                                    ),
-                                  ],
-                                  color: Colors.white
-                              ),
-                              child:
-                              CircleAvatar(
-                                backgroundColor: Colors.white,
-                                radius: 27,
-                                child: Icon(Icons.close,size: 18,color: Colors.grey.shade800,),
                               ),
                             ),
-                          ),
-                          const SizedBox(width: 10,),
-                          //right button
-                          currIndexValue == arrayImages.length-1 ? const CircleAvatar( radius: 22, backgroundColor: Colors.transparent,) :
-                          GestureDetector(
-                            onTap: (){
 
-                              if(currIndexValue != arrayImages.length-1) {
-                                currIndex.value += 1;
-                              }
-                              else{
-                                currIndex.value = 0;
-                              }
-                              currIndex.notifyListeners();
-                              pageController.animateToPage(currIndex.value,duration: const Duration(milliseconds: 400),curve: Curves.linear);
+                          ],
+                        );
+                    })
 
-                            },
-                            child:
-                            Container(
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(25.0),
-                                  boxShadow: const [
-                                    BoxShadow(
-                                      color: Colors.grey,
-                                      spreadRadius: 1,
-                                      blurRadius: 1,
-                                      offset: Offset(0, 1), // changes position of shadow
-                                    ),
-                                  ],
-                                  color: Colors.white
-                              ),
-                              child:
-                              CircleAvatar(
-                                backgroundColor: Colors.white,
-                                radius: 22,
-                                child: Icon(Icons.arrow_forward_ios_rounded,size: 16,color: Colors.grey.shade800,),
-                              ),
-                            ),
-                          ),
+              ),
 
-                        ],
-                      );
-                  })
+            ],
+          )
 
-            ),
-
-          ],
-        )
-
+      ),
     );
   }
 
