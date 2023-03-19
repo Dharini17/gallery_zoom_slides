@@ -4,7 +4,7 @@ Image zoomin & zoomout functionality
 
 ## Features
 
-- image zoomin & zoomout
+- pan gesture
 - pinch zoomin & zoomout
 - double tap zoomin - zoomout
 
