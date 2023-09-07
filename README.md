@@ -8,13 +8,15 @@ Image zoomin & zoomout functionality
 - pinch zoomin & zoomout
 - double tap zoomin - zoomout 
 
+![Semantic description of image](https://raw.githubusercontent.com/Dharini17/gallery_zoom_slides/master/assets/pinch.png "")
+
 <table>
    <tr>
       <td>
-         <img width="250px" src="https://raw.githubusercontent.com/Dharini17/gallery_zoom_slides/master/assets/1.png">
+         <img width="250px" src="https://raw.githubusercontent.com/Dharini17/gallery_zoom_slides/master/assets/theme1.png">
       </td>   
         <td>
-         <img width="250px" src="https://raw.githubusercontent.com/Dharini17/gallery_zoom_slides/master/assets/2.png">
+         <img width="250px" src="https://raw.githubusercontent.com/Dharini17/gallery_zoom_slides/master/assets/theme2.png">
       </td>        
     </tr> 
 </table>
@@ -25,7 +27,7 @@ In your `pubspec.yaml` file within your Flutter Project:
 
 ```yaml
 dependencies:
-  gallery_zoom_slides: <latest_version>
+  gallery_zoom_slides: 0.0.5
 ```
 
 
@@ -33,17 +35,26 @@ dependencies:
 
 ```dart
 
-import 'package:gallery_zoom_slides/gallery_zoom_slides.dart';
-
-    Navigator.push(context, MaterialPageRoute(builder: (context)=>
-         gallery_zoom_slides(
-            arrayImages:  const ["https://i.ibb.co/bFx0p10/7.jpg",
-            "https://i.ibb.co/SPwd6rJ/8.jpg",
-            "https://i.ibb.co/GP2GFTG/6.jpg",
-            "https://i.ibb.co/s3JYgx1/5.jpg",
-            ],
-            currentIndex: 0)
-            ));
+            import 'package:gallery_zoom_slides/gallery_zoom_slides.dart';
+            
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>
+                    galleryZoomSlides(
+                    
+                        //required fields                 
+                        arrayImages:  const [
+                        "https://i.ibb.co/C78HbbR/xl-d-pista-oraganza-s-deklook-original-imags3a5bguzakgq.webp",
+                        "https://i.ibb.co/jH1SBF4/xl-d-pista-oraganza-s-deklook-original-imags3a5kf7tngq8.webp",
+                        "https://i.ibb.co/hZ0By5W/xl-d-pista-oraganza-s-deklook-original-imags3a5pjsfs98c.webp",
+                        "https://i.ibb.co/Dt5qBV3/xl-d-pista-oraganza-s-deklook-original-imags3a5xd7ctjvt.webp"
+                        ],
+                        
+                        //Optional fields
+                        zoomTheme: ZoomTheme.theme2,
+                        selectedImagePosition: 1,
+                        selectedThumbnailColor: Colors.blue,
+                    )
+              )
+            );
         ...
 
 
