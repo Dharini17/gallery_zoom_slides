@@ -8,9 +8,12 @@ Image zoomin & zoomout functionality
 - pinch zoomin & zoomout
 - double tap zoomin - zoomout 
 
-![ALT](https://raw.githubusercontent.com/Dharini17/gallery_zoom_slides/master/assets/pinch.png)
 
 <table>
+    <tr>
+         <img width="250px" src="https://raw.githubusercontent.com/Dharini17/gallery_zoom_slides/master/assets/pinch.png">     
+    </tr>
+    
    <tr>
       <td>
          <img width="250px" src="https://raw.githubusercontent.com/Dharini17/gallery_zoom_slides/master/assets/theme1.png">
