@@ -8,7 +8,7 @@ Image zoomin & zoomout functionality
 - pinch zoomin & zoomout
 - double tap zoomin - zoomout 
 
-![Semantic description of image](https://raw.githubusercontent.com/Dharini17/gallery_zoom_slides/master/assets/pinch.png "")
+![ALT](https://raw.githubusercontent.com/Dharini17/gallery_zoom_slides/master/assets/pinch.png)
 
 <table>
    <tr>
