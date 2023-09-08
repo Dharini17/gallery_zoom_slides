@@ -1,3 +1,6 @@
+## 0.0.7
+    one more new theme for zooming
+
 ## 0.0.5
     Provide 2 types of theme to user
 

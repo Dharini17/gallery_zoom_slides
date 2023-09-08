@@ -23,7 +23,13 @@ Image zoomin & zoomout functionality
         <td>
          <img width="250px" src="https://raw.githubusercontent.com/Dharini17/gallery_zoom_slides/master/assets/theme2.png">
       </td>        
-    </tr> 
+    </tr>
+ <tr>
+        <td>
+         <img width="250px" src="https://raw.githubusercontent.com/Dharini17/gallery_zoom_slides/master/assets/theme3.png">     
+      </td>   
+        <td></td>          
+    </tr>  
 </table>
 
 ## Installation
@@ -32,7 +38,7 @@ In your `pubspec.yaml` file within your Flutter Project:
 
 ```yaml
 dependencies:
-  gallery_zoom_slides: 0.0.5
+  gallery_zoom_slides: 0.0.6
 ```
 
 

@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
-enum ZoomTheme { theme1,theme2 }
+enum ZoomTheme { theme1,theme2,theme3 }
 
 class galleryZoomSlides extends StatelessWidget{
 
@@ -12,18 +12,18 @@ class galleryZoomSlides extends StatelessWidget{
   final int selectedImagePosition;
   final Color selectedThumbnailColor;
   ZoomTheme zoomTheme;
-  
+
 
   galleryZoomSlides({
     super.key,
     required this.arrayImages,
-    this.selectedImagePosition = 0, 
+    this.selectedImagePosition = 0,
     this.selectedThumbnailColor = Colors.blueGrey,
-    required this.zoomTheme,    
+    required this.zoomTheme,
   });
 
   ValueNotifier<int> currentPosition = ValueNotifier(0);
-  
+
   final pageController = PageController();
 
   final _transformationController = TransformationController();
@@ -61,12 +61,12 @@ class galleryZoomSlides extends StatelessWidget{
         visible: isLoaderDisplay,
         child: Container(
 
-           height: 70,width: 70,
+          height: 70,width: 70,
 
-                  child: CircularProgressIndicator(
-                      valueColor: AlwaysStoppedAnimation<Color>(Colors.grey.shade800),
-                      strokeWidth: 2.0,
-                    ),
+          child: CircularProgressIndicator(
+            valueColor: AlwaysStoppedAnimation<Color>(Colors.grey.shade800),
+            strokeWidth: 2.0,
+          ),
 
         ),
       ),
@@ -211,43 +211,143 @@ class galleryZoomSlides extends StatelessWidget{
             Padding(
               padding: const EdgeInsets.only(bottom: 15),
               child: SizedBox(height: 70,
-                          child: RawScrollbar(
-                            controller: ScrollController(),
-                            child: ListView.builder(
-                              itemCount: arrayImages.length,
-                              scrollDirection: Axis.horizontal,
-                              itemBuilder: (context, index) {
-                                return Padding(
-                                  padding: EdgeInsets.only(left: 10,right: index == arrayImages.length-1 ? 10 : 0),
-                                  child: GestureDetector(
-                                    onTap: (){
-                                      currentPosition.value = index;
-                                      currentPosition.notifyListeners();
-                                      pageController.animateToPage(currentPosition.value,duration: const Duration(milliseconds: 400),curve: Curves.linear);
-                                    },
-                                    child: ValueListenableBuilder(
-                                        valueListenable: currentPosition,
-                                        builder: (BuildContext context, currentPositionValue, child) {
+                child: RawScrollbar(
+                  controller: ScrollController(),
+                  child: ListView.builder(
+                    itemCount: arrayImages.length,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: EdgeInsets.only(left: 10,right: index == arrayImages.length-1 ? 10 : 0),
+                        child: GestureDetector(
+                          onTap: (){
+                            currentPosition.value = index;
+                            currentPosition.notifyListeners();
+                            pageController.animateToPage(currentPosition.value,duration: const Duration(milliseconds: 400),curve: Curves.linear);
+                          },
+                          child: ValueListenableBuilder(
+                              valueListenable: currentPosition,
+                              builder: (BuildContext context, currentPositionValue, child) {
 
-                                          return Container(
-                                            height: 70,width: 60,
-                                            padding: const EdgeInsets.all(3),
-                                            decoration: BoxDecoration(
-                                                border: Border.all(width: 1 ,color: index == currentPositionValue ? selectedThumbnailColor : Colors.transparent)
-                                            ),
-                                            child: CachedNetworkImage(
-                                              imageUrl: arrayImages[index],
-                                              placeholder: (context, url) => const Center(child: SizedBox(height: 45,width: 45,),),
-                                              errorWidget: (context, url, error) => const  Icon(Icons.error),
-                                            ),
-                                          );
-                                        }),
+                                return Container(
+                                  height: 70,width: 60,
+                                  padding: const EdgeInsets.all(3),
+                                  decoration: BoxDecoration(
+                                      border: Border.all(width: 1 ,color: index == currentPositionValue ? selectedThumbnailColor : Colors.transparent)
+                                  ),
+                                  child: CachedNetworkImage(
+                                    imageUrl: arrayImages[index],
+                                    placeholder: (context, url) => const Center(child: SizedBox(height: 45,width: 45,),),
+                                    errorWidget: (context, url, error) => const  Icon(Icons.error),
                                   ),
                                 );
-                              },
-                            ),
-                          ),
+                              }),
                         ),
+                      );
+                    },
+                  ),
+                ),
+              ),
+            )
+
+          ],
+        );
+
+      case ZoomTheme.theme3 :
+        return Column(
+          children: [
+
+            Padding(
+              padding: const EdgeInsets.only(top: 40,right: 20),
+              child: Align(
+                alignment: Alignment.centerRight,
+                child: GestureDetector(
+                    onTap: ()=>Navigator.pop(context),
+                    child: Container(
+                      height: 35,width: 35,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(35/2),
+                          border: Border.all(color: Colors.grey,width: 0.5)
+                      ),
+                      alignment: Alignment.center,
+                      child:  Icon(Icons.close_rounded,size: 20,color: Colors.black,),
+                    )
+                ),
+              ),
+            ),
+
+            const Spacer(),
+            Padding(padding: const EdgeInsets.only(bottom: 15),
+                child:  Container(
+                  width: 150,
+                  // padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(35/2),
+                    // border: Border.all(color: Colors.grey,width: 1)
+                  ),
+                  child: ValueListenableBuilder(
+                      valueListenable: currentPosition,
+                      builder: (BuildContext context, currentPositionValue, child) {
+
+                        return Row(
+
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+
+                          children: [
+
+                            //left button
+                            InkWell(
+                              onTap: (){
+
+                                if(currentPositionValue != 0) {
+                                  currentPosition.value -= 1;
+                                }
+                                else{
+                                  currentPosition.value = arrayImages.length-1;
+                                }
+                                currentPosition.notifyListeners();
+                                pageController.animateToPage(currentPosition.value,duration: const Duration(milliseconds: 400),curve: Curves.linear);
+
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.all(10),
+                                child: Icon(Icons.arrow_back_ios_new_rounded,size: 16,color: Colors.grey.shade800,),
+                              ),//currentPositionValue == 0 ? Colors.grey.shade500 :
+
+                            ),
+                            const SizedBox(width: 20,),
+                            //close button
+                            Text("${currentPosition.value+1}/${arrayImages.length}"),
+                            const SizedBox(width: 20,),
+                            //right button
+                            //currentPositionValue == arrayImages.length-1 ? const CircleAvatar( radius: 22, backgroundColor: Colors.transparent,) :
+                            InkWell(
+                              onTap: (){
+
+                                if(currentPositionValue != arrayImages.length-1) {
+                                  currentPosition.value += 1;
+                                }
+                                else{
+                                  currentPosition.value = 0;
+                                }
+                                currentPosition.notifyListeners();
+                                pageController.animateToPage(currentPosition.value,duration: const Duration(milliseconds: 400),curve: Curves.linear);
+
+                              },
+                              child:Padding(
+                                padding: const EdgeInsets.all(10),
+                                child: Icon(Icons.arrow_forward_ios_rounded,size: 16,color:Colors.grey.shade800,),
+                              ),//currentPositionValue == arrayImages.length-1 ? Colors.grey.shade500 :
+
+                            ),
+
+                          ],
+                        );
+                      }),
+                )
             )
 
           ],
@@ -268,8 +368,8 @@ class galleryZoomSlides extends StatelessWidget{
     });
 
     return  Scaffold(
-        backgroundColor: Colors.white,
-          body: Container(
+      backgroundColor: Colors.white,
+      body: Container(
 
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
@@ -279,7 +379,7 @@ class galleryZoomSlides extends StatelessWidget{
 
               //page content
               Positioned.fill(
-                 child: PageView(
+                child: PageView(
                     physics:const NeverScrollableScrollPhysics(),
                     controller: pageController,
                     onPageChanged: onPageChanged,
@@ -325,5 +425,4 @@ class galleryZoomSlides extends StatelessWidget{
       ),
     );
   }
-
 }

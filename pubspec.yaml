@@ -1,11 +1,11 @@
 name: gallery_zoom_slides
 description: Image pan gesture, pinch zoomin-zoomout, double tap zoomin-zoomout
-version: 0.0.5
+version: 0.0.7
 homepage: https://github.com/Dharini17/gallery_zoom_slides
 documentation: https://pub.dev/documentation/gallery_zoom_slides
 
 environment:
-  sdk: '>=2.19.3 <3.0.0'
+  sdk: '>=3.1.0 <4.0.0'
 
 dependencies:
   flutter:

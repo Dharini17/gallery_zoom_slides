@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -66,38 +67,44 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: Center(
+      body: Column(
+        children: [
 
-        child: ElevatedButton(
-         onPressed: (){
+          Center(
 
-           Navigator.push(context, MaterialPageRoute(builder: (context)=>
-               galleryZoomSlides(
+              child: ElevatedButton(
+                onPressed: (){
 
-                          //required fields
-                          arrayImages:  const [
-                            "https://i.ibb.co/C78HbbR/xl-d-pista-oraganza-s-deklook-original-imags3a5bguzakgq.webp",
-                            "https://i.ibb.co/jH1SBF4/xl-d-pista-oraganza-s-deklook-original-imags3a5kf7tngq8.webp",
-                            "https://i.ibb.co/hZ0By5W/xl-d-pista-oraganza-s-deklook-original-imags3a5pjsfs98c.webp",
-                            "https://i.ibb.co/Dt5qBV3/xl-d-pista-oraganza-s-deklook-original-imags3a5xd7ctjvt.webp"
-                            "https://i.ibb.co/C78HbbR/xl-d-pista-oraganza-s-deklook-original-imags3a5bguzakgq.webp",
-                            "https://i.ibb.co/jH1SBF4/xl-d-pista-oraganza-s-deklook-original-imags3a5kf7tngq8.webp",
-                            "https://i.ibb.co/hZ0By5W/xl-d-pista-oraganza-s-deklook-original-imags3a5pjsfs98c.webp",
-                            "https://i.ibb.co/Dt5qBV3/xl-d-pista-oraganza-s-deklook-original-imags3a5xd7ctjvt.webp"
-                          ],
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>
+                      galleryZoomSlides(
 
-                          //Optional fields
-                          zoomTheme: ZoomTheme.theme2,
-                          selectedImagePosition: 1,
-                          selectedThumbnailColor: Colors.blue,
-               )));
+                        //required fields
+                        arrayImages:  const [
+                          "https://i.ibb.co/C78HbbR/xl-d-pista-oraganza-s-deklook-original-imags3a5bguzakgq.webp",
+                          "https://i.ibb.co/jH1SBF4/xl-d-pista-oraganza-s-deklook-original-imags3a5kf7tngq8.webp",
+                          "https://i.ibb.co/hZ0By5W/xl-d-pista-oraganza-s-deklook-original-imags3a5pjsfs98c.webp",
+                          "https://i.ibb.co/Dt5qBV3/xl-d-pista-oraganza-s-deklook-original-imags3a5xd7ctjvt.webp"
+                              "https://i.ibb.co/C78HbbR/xl-d-pista-oraganza-s-deklook-original-imags3a5bguzakgq.webp",
+                          "https://i.ibb.co/jH1SBF4/xl-d-pista-oraganza-s-deklook-original-imags3a5kf7tngq8.webp",
+                          "https://i.ibb.co/hZ0By5W/xl-d-pista-oraganza-s-deklook-original-imags3a5pjsfs98c.webp",
+                          "https://i.ibb.co/Dt5qBV3/xl-d-pista-oraganza-s-deklook-original-imags3a5xd7ctjvt.webp"
+                        ],
 
-         },
-         child: Text("Open gallery"),
+                        //Optional fields
+                        zoomTheme: ZoomTheme.theme3,
+                        selectedImagePosition: 1,
+                        selectedThumbnailColor: Colors.blue,
+                      )));
 
-        )
+                },
+                child: Text("Open gallery"),
 
-      ),
+              )
+
+          ),
+
+        ],
+      )
 
     );
   }
