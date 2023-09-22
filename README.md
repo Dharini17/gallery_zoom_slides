@@ -60,7 +60,7 @@ dependencies:
                         ],
                         
                         //Optional fields
-                        zoomTheme: ZoomTheme.theme2,
+                        zoomTheme: ZoomTheme.theme2,//.theme1, .theme2, .theme3
                         selectedImagePosition: 1,
                         selectedThumbnailColor: Colors.blue,
                     )
