@@ -71,6 +71,4 @@ dependencies:
 
 ```
 
-## Additional information
-
-Images used for example is just for a demo purpose.
+NOTE : Images taken only for demo purpose
