@@ -28,7 +28,9 @@ Image zoomin & zoomout functionality
         <td>
          <img width="250px" src="https://raw.githubusercontent.com/Dharini17/gallery_zoom_slides/master/assets/theme3.png">     
       </td>   
-        <td></td>          
+        <td>
+        <video src="https://raw.githubusercontent.com/Dharini17/gallery_zoom_slides/master/assets/demo.mov" width="250px"/>
+</td>          
     </tr>  
 </table>
 
@@ -38,7 +40,7 @@ In your `pubspec.yaml` file within your Flutter Project:
 
 ```yaml
 dependencies:
-  gallery_zoom_slides: 0.0.6
+  gallery_zoom_slides: 0.0.9
 ```
 
 

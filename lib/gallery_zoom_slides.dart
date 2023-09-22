@@ -32,6 +32,9 @@ class galleryZoomSlides extends StatelessWidget{
   void onPageChanged(int index) {
     currentPosition.value = index;
     currentPosition.notifyListeners();
+    if (_transformationController.value != Matrix4.identity()) {
+      _transformationController.value = Matrix4.identity();
+    }
   }
 
   void _handleDoubleTapDown(TapDownDetails details) {
@@ -380,7 +383,8 @@ class galleryZoomSlides extends StatelessWidget{
               //page content
               Positioned.fill(
                 child: PageView(
-                    physics:const NeverScrollableScrollPhysics(),
+                    // physics:const NeverScrollableScrollPhysics(),
+                    physics:const AlwaysScrollableScrollPhysics(),
                     controller: pageController,
                     onPageChanged: onPageChanged,
                     children:<Widget>[
@@ -399,8 +403,7 @@ class galleryZoomSlides extends StatelessWidget{
                             maxScale: 3.0,
                             panEnabled: true,
                             scaleEnabled: true,
-                            boundaryMargin: EdgeInsets.all(100.0),
-
+                            boundaryMargin: const EdgeInsets.all(100.0),
                             child:
                             CachedNetworkImage(
                               imageUrl: "${arrayImages[i]}",
