@@ -29,7 +29,7 @@ Image zoomin & zoomout functionality
          <img width="250px" src="https://raw.githubusercontent.com/Dharini17/gallery_zoom_slides/master/assets/theme3.png">     
       </td>   
         <td>
-        <video src="https://raw.githubusercontent.com/Dharini17/gallery_zoom_slides/master/assets/demo.mp4" width="250px"/>
+        <img width="250px" src="https://raw.githubusercontent.com/Dharini17/gallery_zoom_slides/master/assets/theme4.png"> 
 </td>          
     </tr>  
 </table>
@@ -62,7 +62,7 @@ dependencies:
                         ],
                         
                         //Optional fields
-                        zoomTheme: ZoomTheme.theme2,//.theme1, .theme2, .theme3
+                        zoomTheme: ZoomTheme.theme2,//.theme1, .theme2, .theme3, .theme4
                         selectedImagePosition: 1,
                         selectedThumbnailColor: Colors.blue,
                     )

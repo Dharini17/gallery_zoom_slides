@@ -1,8 +1,11 @@
+## 0.1.0
+add on theme4
+
 ## 0.0.9
 zooming with next image scrolling
 
 ## 0.0.8
-technical imrovements
+technical improvements
 
 ## 0.0.7
 one more new theme for zooming

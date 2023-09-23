@@ -1,10 +1,11 @@
 library gallery_zoom_slides;
 
+import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
-enum ZoomTheme { theme1,theme2,theme3 }
+enum ZoomTheme { theme1,theme2,theme3, theme4 }
 
 class galleryZoomSlides extends StatelessWidget{
 
@@ -356,6 +357,50 @@ class galleryZoomSlides extends StatelessWidget{
           ],
         );
 
+      case ZoomTheme.theme4 :
+        return Column(
+          children: [
+
+            Padding(
+              padding: const EdgeInsets.only(top: 40,right: 20),
+              child: Align(
+                alignment: Alignment.centerRight,
+                child: GestureDetector(
+                    onTap: ()=>Navigator.pop(context),
+                    child: Container(
+                      height: 35,width: 35,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(35/2),
+                          border: Border.all(color: Colors.grey,width: 0.5)
+                      ),
+                      alignment: Alignment.center,
+                      child:  Icon(Icons.close_rounded,size: 20,color: Colors.black,),
+                    )
+                ),
+              ),
+            ),
+
+            const Spacer(),
+            Padding(padding: const EdgeInsets.only(bottom: 15),
+                child: ValueListenableBuilder(
+                      valueListenable: currentPosition,
+                      builder: (BuildContext context, currentPositionValue, child) {
+
+                        return DotsIndicator(
+                          dotsCount: arrayImages.length,
+                          position: double.parse("$currentPositionValue"),
+                          decorator: DotsDecorator(
+                            color: Colors.grey,
+                            activeColor: selectedThumbnailColor,
+                          ),
+                        );
+                      }),
+
+            )
+
+          ],
+        );
     }
   }
 

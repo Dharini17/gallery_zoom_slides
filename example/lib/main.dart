@@ -80,18 +80,15 @@ class _MyHomePageState extends State<MyHomePage> {
 
                         //required fields
                         arrayImages:  const [
-                          "https://i.ibb.co/C78HbbR/xl-d-pista-oraganza-s-deklook-original-imags3a5bguzakgq.webp",
-                          "https://i.ibb.co/jH1SBF4/xl-d-pista-oraganza-s-deklook-original-imags3a5kf7tngq8.webp",
-                          "https://i.ibb.co/hZ0By5W/xl-d-pista-oraganza-s-deklook-original-imags3a5pjsfs98c.webp",
-                          "https://i.ibb.co/Dt5qBV3/xl-d-pista-oraganza-s-deklook-original-imags3a5xd7ctjvt.webp"
-                          "https://i.ibb.co/C78HbbR/xl-d-pista-oraganza-s-deklook-original-imags3a5bguzakgq.webp",
-                          "https://i.ibb.co/jH1SBF4/xl-d-pista-oraganza-s-deklook-original-imags3a5kf7tngq8.webp",
-                          "https://i.ibb.co/hZ0By5W/xl-d-pista-oraganza-s-deklook-original-imags3a5pjsfs98c.webp",
-                          "https://i.ibb.co/Dt5qBV3/xl-d-pista-oraganza-s-deklook-original-imags3a5xd7ctjvt.webp"
+                        "https://i.ibb.co/VBTrQK2/1.jpg",
+                        "https://i.ibb.co/nDtb6qs/2.jpg",
+                        "https://i.ibb.co/5RRQbkr/3.jpg",
+                        "https://i.ibb.co/T247TPg/4.jpg",
+                        "https://i.ibb.co/wQLqSJD/5.jpg",
                         ],
 
                         //Optional fields
-                        zoomTheme: ZoomTheme.theme3,
+                        zoomTheme: ZoomTheme.theme2,
                         selectedImagePosition: 1,
                         selectedThumbnailColor: Colors.blue,
                       )));
