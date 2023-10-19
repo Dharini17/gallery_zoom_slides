@@ -89,7 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
                         //Optional fields
                         zoomTheme: ZoomTheme.theme2,
-                        selectedImagePosition: 1,
+                        selectedImagePosition: 0,
                         selectedThumbnailColor: Colors.blue,
                       )));
 

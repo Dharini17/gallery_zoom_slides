@@ -4,10 +4,10 @@ Image zoomin & zoomout functionality
 
 ## Features
 
-- pan gesture
-- pinch zoomin & zoomout
-- double tap zoomin - zoomout 
-
+- Pan gesture
+- Pinch zoomin & zoomout
+- Double tap zoomin - zoomout 
+- With 6 different themes
 
 <table>
     <tr>
@@ -32,6 +32,14 @@ Image zoomin & zoomout functionality
         <img width="250px" src="https://raw.githubusercontent.com/Dharini17/gallery_zoom_slides/master/assets/theme4.png"> 
 </td>          
     </tr>  
+ <tr>
+        <td>
+         <img width="250px" src="https://raw.githubusercontent.com/Dharini17/gallery_zoom_slides/master/assets/theme5.png">     
+      </td>   
+        <td>
+        <img width="250px" src="https://raw.githubusercontent.com/Dharini17/gallery_zoom_slides/master/assets/theme6.png"> 
+</td>          
+    </tr>  
 </table>
 
 ## Installation
@@ -40,7 +48,7 @@ In your `pubspec.yaml` file within your Flutter Project:
 
 ```yaml
 dependencies:
-  gallery_zoom_slides: 0.1.1
+  gallery_zoom_slides: 0.1.2
 ```
 
 
@@ -62,7 +70,8 @@ dependencies:
                         ],
                         
                         //Optional fields
-                        zoomTheme: ZoomTheme.theme2,//.theme1, .theme2, .theme3, .theme4
+                        //.theme1, .theme2, .theme3, .theme4, .theme5, .theme6
+                        zoomTheme: ZoomTheme.theme2,
                         selectedImagePosition: 1,
                         selectedThumbnailColor: Colors.blue,
                     )

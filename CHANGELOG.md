@@ -1,3 +1,6 @@
+## 0.1.1 & 0.1.2
+new theme5,theme6 ,gesture improvements & technical bug fixes
+
 ## 0.1.0
 add on theme4
 

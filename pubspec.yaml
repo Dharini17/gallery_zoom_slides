@@ -1,6 +1,6 @@
 name: gallery_zoom_slides
 description: Image pan gesture, pinch zoomin-zoomout, double tap zoomin-zoomout
-version: 0.1.1
+version: 0.1.2
 homepage: https://github.com/Dharini17/gallery_zoom_slides
 documentation: https://pub.dev/documentation/gallery_zoom_slides
 
@@ -27,3 +27,7 @@ screenshots:
     path: screenshots/screenshot3.png
   - description: 'Theme4 look'
     path: screenshots/screenshot4.png
+  - description: 'Theme5 look'
+    path: screenshots/screenshot5.png
+  - description: 'Theme6 look'
+    path: screenshots/screenshot6.png
