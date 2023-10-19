@@ -40,7 +40,7 @@ In your `pubspec.yaml` file within your Flutter Project:
 
 ```yaml
 dependencies:
-  gallery_zoom_slides: 0.1.0
+  gallery_zoom_slides: 0.1.1
 ```
 
 

@@ -389,7 +389,7 @@ class galleryZoomSlides extends StatelessWidget{
 
                         return DotsIndicator(
                           dotsCount: arrayImages.length,
-                          position: double.parse("$currentPositionValue"),
+                          position: int.parse("$currentPositionValue"),
                           decorator: DotsDecorator(
                             color: Colors.grey,
                             activeColor: selectedThumbnailColor,
